@@ -63,6 +63,11 @@ public class Movement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        Move();
+        Jump();
+    }
+
+    void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
 
         if (horizontalPressed != 0) {
@@ -84,7 +89,24 @@ public class Movement : MonoBehaviour {
             }
             body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
         }
+    }
 
+    void Anim() {
+        if (body.velocity.y > 0.1f && !isGrounded) {
+            animator.SetInteger("Jump", 1);
+        }
+        if (body.velocity.y < -0.1f && !isGrounded) {
+            animator.SetInteger("Jump", 2);
+        }
+        if (isGrounded) {
+            animator.SetInteger("Jump", 0);
+        }
+        if (!isGrounded && animator.GetInteger("Jump") != 1) {
+            animator.SetInteger("Jump", 2);
+        }
+    }
+
+    void Jump() {
         if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
             coyoteTimer = 0;
@@ -112,21 +134,6 @@ public class Movement : MonoBehaviour {
             if (coyoteTimer > 0) {
                 coyoteTimer -= 0.1f;
             }
-        }
-    }
-
-    void Anim() {
-        if (body.velocity.y > 0.1f && !isGrounded) {
-            animator.SetInteger("Jump", 1);
-        }
-        if (body.velocity.y < -0.1f && !isGrounded) {
-            animator.SetInteger("Jump", 2);
-        }
-        if (isGrounded) {
-            animator.SetInteger("Jump", 0);
-        }
-        if (!isGrounded && animator.GetInteger("Jump") != 1) {
-            animator.SetInteger("Jump", 2);
         }
     }
 }
