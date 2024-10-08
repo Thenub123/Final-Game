@@ -11,6 +11,14 @@ public class Movement : MonoBehaviour {
     public float baseJumpForce = 2.6f;
     private float jumpForce = 2.6f;
 
+    public float coyoteTiming = 0;
+    private float coyoteTimer = 0;
+
+    public float groundCheckRadius;
+
+    private int horizontalPressed = 0;
+    private int lastHorizontalPressed = 0;
+
     public Sprite jumpSprite;
 
     private Rigidbody2D body;
@@ -19,19 +27,14 @@ public class Movement : MonoBehaviour {
     
     public GameObject spriteObj;
 
-    public bool isGrounded;
+    private bool isGrounded;
     public GameObject groundCheckPoint;
-    public float groundCheckRadius;
+    
     public LayerMask groundLayer;
 
     private bool jumpPressed = false;
     private bool canJump = true;
     private float y_velocity = 0;
-    private int horizontalPressed = 0;
-    private int lastHorizontalPressed = 0;
-
-    public float coyoteTiming = 0;
-    private float coyoteTimer = 0;
 
     void Awake() {
         body = GetComponent<Rigidbody2D>();
