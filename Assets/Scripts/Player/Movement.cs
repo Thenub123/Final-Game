@@ -7,9 +7,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
 
     public float baseSpeed = 2.8f;
-    public float runSpeed = 0f;
+    private float runSpeed = 0f;
     public float baseJumpForce = 2.6f;
-    public float jumpForce = 2.6f;
+    private float jumpForce = 2.6f;
 
     public Sprite jumpSprite;
 
@@ -24,11 +24,14 @@ public class Movement : MonoBehaviour {
     public float groundCheckRadius;
     public LayerMask groundLayer;
 
-    public bool jumpPressed = false;
-    public bool canJump = true;
-    public float y_velocity = 0;
-    public int horizontalPressed = 0;
+    private bool jumpPressed = false;
+    private bool canJump = true;
+    private float y_velocity = 0;
+    private int horizontalPressed = 0;
     private int lastHorizontalPressed = 0;
+
+    public float coyoteTiming = 0;
+    private float coyoteTimer = 0;
 
     void Awake() {
         body = GetComponent<Rigidbody2D>();
@@ -82,8 +85,9 @@ public class Movement : MonoBehaviour {
             body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
         }
 
-        if (jumpPressed && isGrounded && canJump) {
+        if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
+            coyoteTimer = 0;
             body.velocity = new Vector2(body.velocity.x, baseJumpForce);
             canJump = false;
         }
@@ -100,7 +104,14 @@ public class Movement : MonoBehaviour {
         }
 
         if (isGrounded && !jumpPressed) {
+            coyoteTimer = coyoteTiming;
             canJump = true;
+        }
+
+        if (!isGrounded) {
+            if (coyoteTimer > 0) {
+                coyoteTimer -= 0.1f;
+            }
         }
     }
 
@@ -113,6 +124,9 @@ public class Movement : MonoBehaviour {
         }
         if (isGrounded) {
             animator.SetInteger("Jump", 0);
+        }
+        if (!isGrounded && animator.GetInteger("Jump") != 1) {
+            animator.SetInteger("Jump", 2);
         }
     }
 }
