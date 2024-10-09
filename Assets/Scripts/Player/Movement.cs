@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
+
+    [Header("Movement Variables")]
     public float baseSpeed = 2.8f;
     private float runSpeed = 0f;
     public float baseJumpForce = 2.6f;
@@ -19,6 +21,7 @@ public class Movement : MonoBehaviour {
     private int horizontalPressed = 0;
     private int lastHorizontalPressed = 0;
 
+    [Header("References")]
     public Sprite jumpSprite;
 
     private Rigidbody2D body;
@@ -87,7 +90,7 @@ public class Movement : MonoBehaviour {
             if (runSpeed > 0.1f) {
                 runSpeed -= 0.4f;
             }
-            if (runSpeed < 0) {
+            if (runSpeed < 0.2f) {
                 runSpeed = 0;
             }
             body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
@@ -113,7 +116,7 @@ public class Movement : MonoBehaviour {
         if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
             coyoteTimer = 0;
-            body.velocity = new Vector2(body.velocity.x, baseJumpForce);
+            body.velocity = new Vector2(0, baseJumpForce);
             canJump = false;
         }
 
