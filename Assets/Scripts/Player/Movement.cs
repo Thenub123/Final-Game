@@ -21,6 +21,9 @@ public class Movement : MonoBehaviour {
     private int horizontalPressed = 0;
     private int lastHorizontalPressed = 0;
 
+    public bool isDead = false;
+    public float baseDeathTimer = 200;
+
     [Header("References")]
     public Sprite jumpSprite;
 
@@ -69,13 +72,14 @@ public class Movement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        Move();
-        Jump();
+        if (!isDead) { 
+            Move();
+            Jump();
+        } 
     }
 
     void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
-
         if (horizontalPressed != 0) {
             if (runSpeed < baseSpeed) {
                 runSpeed += 0.5f;
@@ -98,17 +102,24 @@ public class Movement : MonoBehaviour {
     }
 
     void Anim() {
-        if (body.velocity.y > 0.1f && !isGrounded) {
-            animator.SetInteger("Jump", 1);
-        }
-        if (body.velocity.y < -0.1f && !isGrounded) {
-            animator.SetInteger("Jump", 2);
-        }
-        if (isGrounded) {
+        if (!isDead) {
+            animator.SetBool("isDead", false);
+            if (body.velocity.y > 0.1f && !isGrounded) {
+                animator.SetInteger("Jump", 1);
+            }
+            if (body.velocity.y < -0.1f && !isGrounded) {
+                animator.SetInteger("Jump", 2);
+            }
+            if (isGrounded) {
+                animator.SetInteger("Jump", 0);
+            }
+            if (!isGrounded && animator.GetInteger("Jump") != 1) {
+                animator.SetInteger("Jump", 2);
+            }
+        } else {
             animator.SetInteger("Jump", 0);
-        }
-        if (!isGrounded && animator.GetInteger("Jump") != 1) {
-            animator.SetInteger("Jump", 2);
+            animator.SetBool("Running", false);
+            animator.SetBool("isDead", true);
         }
     }
 
@@ -141,5 +152,20 @@ public class Movement : MonoBehaviour {
                 coyoteTimer -= 0.1f;
             }
         }
+    }
+
+    private IEnumerator deathTimer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        body.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isDead = false;
+        body.transform.position = new Vector2(0, 0);
+    }
+
+    public void Die() {
+        animator.SetBool("Running", false);
+        body.constraints = RigidbodyConstraints2D.FreezeAll;
+        isDead = true;
+        StartCoroutine(deathTimer(baseDeathTimer));
     }
 }
