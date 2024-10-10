@@ -11,6 +11,8 @@ public class LevelTransition : MonoBehaviour
     public GameObject camera_pos;
 
     public Rigidbody2D rb2D;
+    
+    public Movement movement;
 
     public bool level_enabled = false;
 
@@ -34,12 +36,14 @@ public class LevelTransition : MonoBehaviour
 
         float distance = (float) Math.Sqrt(Math.Pow(camera_pos.transform.position.x - camera_obj.transform.position.x, 2f) + Math.Pow(camera_pos.transform.position.y - camera_obj.transform.position.y, 2f));
 
-        if (level_enabled && camera_obj.transform.position != camera_pos.transform.position) {
-            camera_obj.transform.position = new Vector3(camera_obj.transform.position.x + ((camera_pos.transform.position.x - camera_obj.transform.position.x) / 25), camera_obj.transform.position.y + ((camera_pos.transform.position.y - camera_obj.transform.position.y) / 25), -10);
+        if (level_enabled && camera_obj.transform.position != camera_pos.transform.position && movement.isDead == false) {
+            camera_obj.transform.position = new Vector3(camera_obj.transform.position.x + ((camera_pos.transform.position.x - camera_obj.transform.position.x) / 10), camera_obj.transform.position.y + ((camera_pos.transform.position.y - camera_obj.transform.position.y) / 10), -10);
+            movement.isFrozen = true;
         }
 
         if (distance < 0.01f) {
             level_enabled = false;
+            movement.isFrozen = false;
         }
     }
 }

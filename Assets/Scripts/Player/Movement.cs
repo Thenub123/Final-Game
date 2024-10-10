@@ -24,6 +24,8 @@ public class Movement : MonoBehaviour {
     public bool isDead = false;
     public float baseDeathTimer = 200;
 
+    public bool isFrozen = false;
+
     [Header("References")]
     public Sprite jumpSprite;
 
@@ -68,14 +70,13 @@ public class Movement : MonoBehaviour {
         }
 
         y_velocity = body.velocity.y;
-        
     }
 
     void FixedUpdate() {
-        if (!isDead) { 
+        if (!isDead) {
             Move();
             Jump();
-        } 
+        }
     }
 
     void Move() {
@@ -164,8 +165,8 @@ public class Movement : MonoBehaviour {
 
     public void Die() {
         animator.SetBool("Running", false);
-        body.constraints = RigidbodyConstraints2D.FreezeAll;
         isDead = true;
+        body.constraints = RigidbodyConstraints2D.FreezeAll;
         StartCoroutine(deathTimer(baseDeathTimer));
     }
 }
