@@ -13,6 +13,11 @@ public class Movement : MonoBehaviour {
     public float baseJumpForce = 2.6f;
     private float jumpForce = 2.6f;
 
+    private RaycastHit2D leftHit;
+    private RaycastHit2D rightHit;
+
+    private float leftPositionX;
+    private float rightPositionX;
     public float coyoteTiming = 0;
     private float coyoteTimer = 0;
 
@@ -29,6 +34,8 @@ public class Movement : MonoBehaviour {
     [Header("References")]
     public Sprite jumpSprite;
 
+    public BoxCollider2D player_colider;
+
     private Rigidbody2D body;
     private SpriteRenderer sr;
     private Animator animator;
@@ -42,12 +49,18 @@ public class Movement : MonoBehaviour {
 
     private bool jumpPressed = false;
     private bool canJump = true;
-    private float y_velocity = 0;
+    public bool isTouchingWall;
+    public bool canWallJump;
+
+    public int wall_multiplier = 5;
+
 
     void Awake() {
         body = GetComponent<Rigidbody2D>();
         sr = spriteObj.GetComponent<SpriteRenderer>();
         animator = spriteObj.GetComponent<Animator>();
+        rightPositionX = player_colider.bounds.max.x + .1f;
+        leftPositionX = player_colider.bounds.min.x - .1f;
     }
 
     void Update() {
@@ -68,38 +81,63 @@ public class Movement : MonoBehaviour {
         else{
             animator.SetBool("Running", false);
         }
-
-        y_velocity = body.velocity.y;
     }
 
     void FixedUpdate() {
         if (!isDead) {
             Move();
             Jump();
+            WallJump();
         }
     }
 
     void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
-        if (horizontalPressed != 0) {
-            if (runSpeed < baseSpeed) {
-                runSpeed += 0.5f;
+
+        isTouchingWall = Physics2D.OverlapCircle(body.transform.position, 0.16f, groundLayer);
+
+        if(isGrounded) {
+            if (horizontalPressed != 0) {
+                if (runSpeed < baseSpeed) {
+                    runSpeed += 0.5f;
+                }
+                lastHorizontalPressed = horizontalPressed;
+                body.velocity = new Vector2(horizontalPressed * runSpeed - (horizontalPressed * wall_multiplier), body.velocity.y);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
             }
-            lastHorizontalPressed = horizontalPressed;
-            body.velocity = new Vector2(horizontalPressed * runSpeed, body.velocity.y);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
+            else
+            {
+                animator.SetBool("Running", false);
+                if (runSpeed > 0.1f) {
+                    runSpeed -= 0.4f;
+                }
+                if (runSpeed < 0.2f) {
+                    runSpeed = 0;
+                }
+                body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
+            }
         }
-        else
-        {
-            animator.SetBool("Running", false);
-            if (runSpeed > 0.1f) {
-                runSpeed -= 0.4f;
+        else {
+            if (horizontalPressed != 0) {
+                if (runSpeed < baseSpeed) {
+                    runSpeed += 0.5f;
+                }
+                lastHorizontalPressed = horizontalPressed;
+                body.AddForce(new Vector2(horizontalPressed * runSpeed - (horizontalPressed * wall_multiplier), 0), ForceMode2D.Impulse);
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
             }
-            if (runSpeed < 0.2f) {
-                runSpeed = 0;
+            else
+            {
+                if (runSpeed > 0.1f) {
+                    runSpeed -= 0.4f;
+                }
+                if (runSpeed < 0.2f) {
+                    runSpeed = 0;
+                }
+                body.AddForce(new Vector2(lastHorizontalPressed * runSpeed, 0), ForceMode2D.Impulse);
             }
-            body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
         }
+
     }
 
     void Anim() {
@@ -125,11 +163,12 @@ public class Movement : MonoBehaviour {
     }
 
     void Jump() {
-        if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
+        if ((canWallJump && jumpPressed && canJump)||(coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
             coyoteTimer = 0;
-            body.velocity = new Vector2(0, baseJumpForce);
             canJump = false;
+            body.velocity = new Vector2(body.velocity.x, baseJumpForce);
+            body.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
         }
 
         if (!isGrounded && body.velocity.y > 0 && !jumpPressed) {
@@ -168,5 +207,16 @@ public class Movement : MonoBehaviour {
         isDead = true;
         body.constraints = RigidbodyConstraints2D.FreezeAll;
         StartCoroutine(deathTimer(baseDeathTimer));
+    }
+
+    public void WallJump() {
+        if (isTouchingWall && horizontalPressed != 0 && !isGrounded) {
+            body.velocity = new Vector2(body.velocity.x, -0.5f);
+            canJump = true;
+            canWallJump = true;
+        } else {
+            canWallJump = false;
+            wall_multiplier = 0;
+        }
     }
 }
