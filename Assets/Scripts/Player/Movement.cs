@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using System;
 
 public class Movement : MonoBehaviour {
 
+	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
+	private Vector3 m_Velocity = Vector3.zero;
 
     [Header("Movement Variables")]
     public float baseSpeed = 2.8f;
-    private float runSpeed = 0f;
+    public float runSpeed = 0f;
     public float baseJumpForce = 2.6f;
     private float jumpForce = 2.6f;
 
@@ -24,7 +27,7 @@ public class Movement : MonoBehaviour {
     public float groundCheckRadius;
 
     private int horizontalPressed = 0;
-    private int lastHorizontalPressed = 0;
+    public int lastHorizontalPressed = 0;
 
     public bool isDead = false;
     public float baseDeathTimer = 200;
@@ -51,8 +54,13 @@ public class Movement : MonoBehaviour {
     private bool canJump = true;
     public bool isTouchingWall;
     public bool canWallJump;
+    public bool didWallJump;
+
+    public float wallJumpForce = 0;
 
     public int wall_multiplier = 5;
+
+    public int wallDir;
 
 
     void Awake() {
@@ -87,7 +95,8 @@ public class Movement : MonoBehaviour {
         if (!isDead) {
             Move();
             Jump();
-            WallJump();
+            // WallJump();
+            // WallJumpForce();
         }
     }
 
@@ -96,49 +105,30 @@ public class Movement : MonoBehaviour {
 
         isTouchingWall = Physics2D.OverlapCircle(body.transform.position, 0.16f, groundLayer);
 
-        if(isGrounded) {
-            if (horizontalPressed != 0) {
-                if (runSpeed < baseSpeed) {
-                    runSpeed += 0.5f;
-                }
-                lastHorizontalPressed = horizontalPressed;
-                body.velocity = new Vector2(horizontalPressed * runSpeed - (horizontalPressed * wall_multiplier), body.velocity.y);
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
+        if (horizontalPressed != 0) {
+            if (runSpeed < baseSpeed) {
+                runSpeed += 0.5f;
             }
-            else
-            {
-                animator.SetBool("Running", false);
-                if (runSpeed > 0.1f) {
-                    runSpeed -= 0.4f;
-                }
-                if (runSpeed < 0.2f) {
-                    runSpeed = 0;
-                }
-                body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
-            }
-        }
-        else {
-            if (horizontalPressed != 0) {
-                if (runSpeed < baseSpeed) {
-                    runSpeed += 0.5f;
-                }
-                lastHorizontalPressed = horizontalPressed;
-                body.AddForce(new Vector2(horizontalPressed * runSpeed - (horizontalPressed * wall_multiplier), 0), ForceMode2D.Impulse);
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
-            }
-            else
-            {
-                if (runSpeed > 0.1f) {
-                    runSpeed -= 0.4f;
-                }
-                if (runSpeed < 0.2f) {
-                    runSpeed = 0;
-                }
-                body.AddForce(new Vector2(lastHorizontalPressed * runSpeed, 0), ForceMode2D.Impulse);
-            }
-        }
+            lastHorizontalPressed = horizontalPressed;
+            // body.velocity = new Vector2(horizontalPressed * runSpeed, body.velocity.y);
+            
+            Vector3 targetVelocity = new Vector2(horizontalPressed * runSpeed, body.velocity.y);
+			body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-    }
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, (horizontalPressed * -90) + 90, transform.eulerAngles.z);
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+            if (runSpeed > 0.1f) {
+                runSpeed -= 0.4f;
+            }
+            if (runSpeed < 0.2f) {
+                runSpeed = 0;
+            }
+            // body.velocity = new Vector2(lastHorizontalPressed * runSpeed, body.velocity.y);
+        }
+        }
 
     void Anim() {
         if (!isDead) {
@@ -168,7 +158,10 @@ public class Movement : MonoBehaviour {
             coyoteTimer = 0;
             canJump = false;
             body.velocity = new Vector2(body.velocity.x, baseJumpForce);
-            body.AddForce(new Vector2(1, 0), ForceMode2D.Impulse);
+            body.AddForce(new Vector2(30, 0));
+            if (canWallJump) {
+                didWallJump = true;
+            }
         }
 
         if (!isGrounded && body.velocity.y > 0 && !jumpPressed) {
@@ -182,9 +175,10 @@ public class Movement : MonoBehaviour {
             body.AddForce(new Vector2(0, -20f));
         }
 
-        if (isGrounded && !jumpPressed) {
+        if ((isGrounded && !jumpPressed) || (canWallJump && !jumpPressed)) {
             coyoteTimer = coyoteTiming;
             canJump = true;
+            wallJumpForce = 0;
         }
 
         if (!isGrounded) {
@@ -209,14 +203,32 @@ public class Movement : MonoBehaviour {
         StartCoroutine(deathTimer(baseDeathTimer));
     }
 
-    public void WallJump() {
-        if (isTouchingWall && horizontalPressed != 0 && !isGrounded) {
-            body.velocity = new Vector2(body.velocity.x, -0.5f);
-            canJump = true;
-            canWallJump = true;
-        } else {
-            canWallJump = false;
-            wall_multiplier = 0;
-        }
-    }
+    // public void WallJump() {
+    //     if (isTouchingWall && horizontalPressed != 0 && !isGrounded) {
+    //         body.velocity = new Vector2(body.velocity.x, -0.5f);
+    //         canWallJump = true;
+    //         canJump = true;
+    //         if (horizontalPressed > 0) {
+    //             wallDir = -1;
+    //         } else if (horizontalPressed < 0) {
+    //             wallDir = 1;
+    //         }
+    //     } else {
+    //         canWallJump = false;
+    //         wall_multiplier = 0;
+    //     }
+    // }
+
+    // public void WallJumpForce(){
+    //     if (didWallJump) {
+    //         wallJumpForce = 3.5f;
+    //         didWallJump = false;
+    //     }
+    //     if (wallJumpForce > 0) {
+    //         wallJumpForce -= 0.1f;
+    //     }
+    //     if (wallJumpForce < 0) {
+    //         wallJumpForce = 0;
+    //     }
+    // }
 }
