@@ -16,10 +16,13 @@ public class LevelTransition : MonoBehaviour
 
     public bool level_enabled = false;
 
+    public GameObject checkPointObj;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 7) {
             level_enabled = true;
+            movement.checkPoint = checkPointObj.transform.position;
             // rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         }
     }

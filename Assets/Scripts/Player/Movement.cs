@@ -25,6 +25,11 @@ public class Movement : MonoBehaviour {
     public float coyoteTiming = 0;
     private float coyoteTimer = 0;
 
+    public float wallCoyoteTiming = 0;
+    private float wallCoyoteTimer = 0;
+
+    public int wallDir;
+
     public float groundCheckRadius;
 
     private int horizontalPressed = 0;
@@ -62,6 +67,8 @@ public class Movement : MonoBehaviour {
 
     private bool jumpPressed = false;
     private bool canJump = true;
+
+    public Vector2 checkPoint;
 
     void Awake() {
         body = GetComponent<Rigidbody2D>();
@@ -108,10 +115,18 @@ public class Movement : MonoBehaviour {
             isSliding = false;
         }
         if(isSliding) {
+            wallCoyoteTimer = wallCoyoteTiming;
             body.velocity = new Vector2 (body.velocity.x, Mathf.Clamp(body.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            wallDir = horizontalPressed;
         }
         if(wallJumping) {
-            body.velocity = new Vector2(-horizontalPressed*wallJumpForce.x, wallJumpForce.y);
+            body.velocity = new Vector2(-wallDir*wallJumpForce.x, wallJumpForce.y);
+        }
+
+        if (!isSliding) {
+            if (wallCoyoteTimer > 0) {
+                wallCoyoteTimer -= 0.1f;
+            }
         }
     }
 
@@ -182,7 +197,8 @@ public class Movement : MonoBehaviour {
             body.AddForce(new Vector2(30, 0));
         }
         
-        if (jumpPressed && canJump && isSliding) {
+        if ((wallCoyoteTimer > 0 && jumpPressed && canJump) || (jumpPressed && canJump && isSliding)) {
+            wallCoyoteTimer = 0;
             wallJumping = true;
             canJump = false;
             Invoke("StopWallJump", wallJumpDuration);
@@ -217,12 +233,12 @@ public class Movement : MonoBehaviour {
         wallJumping = false;
     }
 
-    private IEnumerator deathTimer(float waitTime)
+    public IEnumerator deathTimer(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         body.constraints = RigidbodyConstraints2D.FreezeRotation;
         isDead = false;
-        body.transform.position = new Vector2(0, 0);
+        body.transform.position = checkPoint;
     }
 
     public void Die() {
