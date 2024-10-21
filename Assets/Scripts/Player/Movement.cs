@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour {
     public bool wallJumping;
 
     private bool jumpPressed = false;
-    private bool canJump = true;
+    public bool canJump = true;
 
     public Vector2 checkPoint;
 
@@ -194,7 +194,6 @@ public class Movement : MonoBehaviour {
             coyoteTimer = 0;
             canJump = false;
             body.velocity = new Vector2(body.velocity.x, baseJumpForce);
-            body.AddForce(new Vector2(30, 0));
         }
         
         if ((wallCoyoteTimer > 0 && jumpPressed && canJump) || (jumpPressed && canJump && isSliding)) {

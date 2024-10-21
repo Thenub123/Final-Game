@@ -16,6 +16,8 @@ public class LevelTransition : MonoBehaviour
 
     public bool level_enabled = false;
 
+    public bool rendered = false;
+
     public GameObject checkPointObj;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,6 +25,11 @@ public class LevelTransition : MonoBehaviour
         if (other.gameObject.layer == 7) {
             level_enabled = true;
             movement.checkPoint = checkPointObj.transform.position;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            // rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        }
+        if (other.gameObject.layer == 9) {
+            rendered = true;
             // rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         }
     }
@@ -32,6 +39,18 @@ public class LevelTransition : MonoBehaviour
         if (other.gameObject.layer == 7) {
             level_enabled = false;
             // rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        }
+        if (other.gameObject.layer == 9) {
+            rendered = false;
+            // rb2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        }
+    }
+
+    void Update() {
+        if (rendered) {
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        } else {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
