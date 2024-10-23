@@ -40,6 +40,8 @@ public class Movement : MonoBehaviour {
 
     public bool isFrozen = false;
 
+    public bool canMove = true;
+
     [Header("References")]
     public Sprite jumpSprite;
 
@@ -82,13 +84,18 @@ public class Movement : MonoBehaviour {
 
         Anim();
 
-        if (Input.GetKeyDown(KeyCode.Space)) jumpPressed = true;
-        if (Input.GetKeyUp(KeyCode.Space)) jumpPressed = false;
-        
-        if (Input.GetKey(KeyCode.A)) horizontalPressed = -1;
-        if (Input.GetKey(KeyCode.D)) horizontalPressed = 1;
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalPressed = 0;
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) horizontalPressed = 0;
+        if (canMove){
+            if (Input.GetKeyDown(KeyCode.Space)) jumpPressed = true;
+            if (Input.GetKeyUp(KeyCode.Space)) jumpPressed = false;
+            
+            if (Input.GetKey(KeyCode.A)) horizontalPressed = -1;
+            if (Input.GetKey(KeyCode.D)) horizontalPressed = 1;
+            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalPressed = 0;
+            if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) horizontalPressed = 0;
+        } else {
+            horizontalPressed = 0;
+            jumpPressed = false;
+        }
 
         if (horizontalPressed != 0) {
             animator.SetBool("Running", true);
