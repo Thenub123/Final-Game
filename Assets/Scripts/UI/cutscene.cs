@@ -48,14 +48,14 @@ public class cutscene : MonoBehaviour
         }
 
         if (skipPressed && canSkip && cutsceneEnabled) {
-            if (currentDialogue < dialogueLength) {
+            if (currentDialogue < dialogueLength - 1) {
                 canSkip = false;
-                animator.SetBool("Open", false);
+                animator.SetTrigger("Refresh");
                 currentDialogue += 1;
-                animator.SetBool("Open", true);
                 person.sprite = dialogueOrder[currentDialogue].PersonImage;
                 text.text = dialogueOrder[currentDialogue].Text;
                 movement.canMove = false;
+                animator.ResetTrigger("Refresh");
             } else {
                 animator.SetBool("Open", false);
                 cutsceneEnabled = false;
