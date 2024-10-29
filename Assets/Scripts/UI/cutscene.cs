@@ -4,18 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
 
 [System.Serializable]
 public class DialogueOrder {
+
+    [Header("Dialogue Options")]
+    public bool dialogueEnabled = true;
     public Sprite PersonImage;
     public string Text;
     public string Name;
     public bool Right;
+
+    [Header("Move Options")]
+
+    public bool moveEnabled = false;
 }
+
+
 
 public class cutscene : MonoBehaviour
 {
 
+    [Header("Dialogue")]
+    public DialogueOrder[] dialogueOrder;
+
+    [Header("References")]
     public GameObject dialogueBox;
     public Image person;
 
@@ -27,22 +42,20 @@ public class cutscene : MonoBehaviour
 
     public Animator animator;
 
-    public DialogueOrder[] dialogueOrder;
+    private int currentDialogue = 0;
 
-    public int currentDialogue = 0;
+    private bool skipPressed = false;
 
-    public bool skipPressed = false;
+    private bool canSkip = true;
 
-    public bool canSkip = true;
+    private int dialogueLength;
 
-    public int dialogueLength;
+    private bool cutsceneEnabled = false;
 
-    public bool cutsceneEnabled = false;
+    private float cutsceneSkipTime = 0.5f;
+    private float cutsceneCooldownTime = 0.5f;
 
-    public float cutsceneSkipTime;
-    public float cutsceneCooldownTime;
-
-    public bool dialogueEnabled = true;
+    private bool dialogueEnabled = true;
 
     void Start() {
         animator.SetBool("Open", false);

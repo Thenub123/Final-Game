@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour {
 
     public float groundCheckRadius;
 
-    private int horizontalPressed = 0;
+    public int horizontalPressed = 0;
     public int lastHorizontalPressed = 0;
 
     public bool isDead = false;
@@ -92,7 +92,6 @@ public class Movement : MonoBehaviour {
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalPressed = 0;
             if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) horizontalPressed = 0;
         } else {
-            horizontalPressed = 0;
             jumpPressed = false;
         }
 
