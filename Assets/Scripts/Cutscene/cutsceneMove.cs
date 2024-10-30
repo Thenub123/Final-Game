@@ -11,6 +11,8 @@ public class cutsceneMove : MonoBehaviour
 
     public GameObject player;
 
+    public bool done = false;
+
     void Update() {
         if (moveEnabled) {
             movement.canMove = false;
@@ -23,15 +25,15 @@ public class cutsceneMove : MonoBehaviour
             }
             
         } else {
-            movement.canMove = true;
             return;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.layer == 7) {
-            movement.canMove = true;
             moveEnabled = false;
+            done = true;
+            movement.horizontalPressed = 0;
         }
     }
 
