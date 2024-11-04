@@ -38,7 +38,11 @@ public class Movement : MonoBehaviour {
 
     public bool canMove = true;
 
+    public bool edgeCheck;
+
     [Header("References")]
+
+    public Transform edge_position;
     public Sprite jumpSprite;
 
     public BoxCollider2D player_colider;
@@ -163,6 +167,9 @@ public class Movement : MonoBehaviour {
         }
 
     void Anim() {
+
+        edgeCheck = Physics2D.OverlapBox(edge_position.position, new Vector2(.03f, 0.07f), 0, groundLayer);
+
         if (!isDead) {
             animator.SetBool("isDead", false);
             if (body.velocity.y > 0.1f && !isGrounded) {
@@ -182,6 +189,11 @@ public class Movement : MonoBehaviour {
             }
             else {
                 animator.SetBool("Wall Slide", false);
+            }
+            if(edgeCheck || !isGrounded) {
+                animator.SetBool("onEdge", false);
+            } else if(!edgeCheck && isGrounded) {
+                animator.SetBool("onEdge", true);
             }
         } else {
             animator.SetInteger("Jump", 0);
