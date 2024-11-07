@@ -22,8 +22,6 @@ public class DialogueOrder {
     public cutsceneMove cutsceneMoveBox;
 }
 
-
-
 public class cutscene : MonoBehaviour
 {
 
