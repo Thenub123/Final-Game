@@ -1,36 +1,42 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEditor;
-// using UnityEngine;
-// using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class EventHandler : MonoBehaviour
-// {
-//         [HideInInspector] public int arrayIdx = 0;
-//         [HideInInspector] public string[] EventArray = new string[] {"Move", "Animate"};
+public class EventHandler : MonoBehaviour
+{
+        [HideInInspector] public int arrayIdx = 0;
+        [HideInInspector] public string[] EventArray = new string[] {"Move", "Animate"};
 
-//         [Header("Move")]
-//         [HideInInspector] public int moveCol;
+        [Header("Move")]
+        [HideInInspector] public cutsceneMove moveCol;
 
-// }
+}
 
-// [CustomEditor(typeof(EventHandler))]
+[CustomEditor(typeof(EventHandler))]
 
-// public class EventEditor : Editor {
-//     public override void OnInspectorGUI()
-//     {
-//         base.OnInspectorGUI();
+public class EventEditor : Editor {
 
-//         EventHandler script = (EventHandler)target;
+    SerializedProperty moveCol;
 
-//         GUIContent arrayLabel = new GUIContent("EventArray");
-//         script.arrayIdx = EditorGUILayout.Popup(arrayLabel, script.arrayIdx, script.EventArray);
+    private void OnEnable() {
+        moveCol = serializedObject.FindProperty("moveCol");
+    }
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
 
-//         if(script.arrayIdx == 0) {
-//             script.moveCol = EditorGUILayout.IntField(label: "int", script.moveCol);
-//         }
+        EventHandler script = (EventHandler)target;
+
+        GUIContent arrayLabel = new GUIContent("EventArray");
+        script.arrayIdx = EditorGUILayout.Popup(arrayLabel, script.arrayIdx, script.EventArray);
+
+        if(script.arrayIdx == 0) {
+            EditorGUILayout.PropertyField(moveCol);
+        }
 
         
 
-//     }
-// }
+    }
+}
