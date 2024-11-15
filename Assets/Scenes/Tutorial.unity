@@ -83856,8 +83856,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb382068a0adfa4d97be45944e1a308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Events: 0
   arrayIdx: 0
+  EventArray:
+  - Move
+  - Animate
   moveCol: {fileID: 0}
 --- !u!1 &1481784084
 GameObject:
