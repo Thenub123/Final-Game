@@ -17,7 +17,7 @@ TagManager:
   - Obstacle
   - Cam
   - Event
-  - 
+  - Water
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: NoLight
     uniqueID: 1567128117
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 1141988487
     locked: 0

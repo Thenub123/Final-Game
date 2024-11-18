@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour {
 
@@ -40,7 +41,12 @@ public class Movement : MonoBehaviour {
 
     public bool edgeCheck;
 
+    public int prot = 0;
+    public bool canProt = true;
+
     [Header("References")]
+
+    public Shockwave shockwave;
 
     public Transform edge_position;
     public Sprite jumpSprite;
@@ -85,6 +91,22 @@ public class Movement : MonoBehaviour {
         Anim();
 
         if (canMove){
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canProt){
+                canProt = false;
+                if (prot == 1) {
+                    shockwave.CallShockWave();
+                    prot = 0;
+                } else {
+                    shockwave.UnCallShockWave();
+                    prot = 1;
+                }
+            } else {
+                if(shockwave.dis <= 0.08f || shockwave.dis >= 0.5f){
+                    canProt = true;
+                }   
+            }
+
             if (Input.GetKeyDown(KeyCode.Space)) jumpPressed = true;
             if (Input.GetKeyUp(KeyCode.Space)) jumpPressed = false;
             
@@ -92,6 +114,8 @@ public class Movement : MonoBehaviour {
             if (Input.GetKey(KeyCode.D)) horizontalPressed = 1;
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalPressed = 0;
             if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) horizontalPressed = 0;
+
+
         } else {
             jumpPressed = false;
         }
