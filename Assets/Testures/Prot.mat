@@ -67,12 +67,12 @@ Material:
     - _QueueOffset: 0
     - _SecondaryDiff: 0
     - _SecondarySize: 0.29
-    - _SecondarySizeTime: 2.11
+    - _SecondarySizeTime: 2
     - _SecondarySpeed: 2
     - _SecondaryStrength: -0.1
     - _Size: 0.02
-    - _Strength: -0.25
-    - _WaveDiff: 0.08
+    - _Strength: -1.76
+    - _WaveDiff: 1
     - _XRat: 1.777
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
