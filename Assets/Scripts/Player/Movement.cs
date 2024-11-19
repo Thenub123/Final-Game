@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour {
 
     public int prot = 0;
     public bool canProt = true;
+    public bool protEnabled = false;
 
     [Header("References")]
 
@@ -101,7 +102,7 @@ public class Movement : MonoBehaviour {
                     shockwave.UnCallShockWave();
                     prot = 1;
                 }
-            } else {
+            } else if (protEnabled) {
                 if(shockwave.dis <= 0.08f || shockwave.dis >= 0.5f){
                     canProt = true;
                 }   
