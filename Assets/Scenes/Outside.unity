@@ -7956,7 +7956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &324461905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78348,7 +78348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1858819621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93580,6 +93580,10 @@ PrefabInstance:
       propertyPath: shockwave
       value: 
       objectReference: {fileID: 1345682557}
+    - target: {fileID: 2235759966133917092, guid: 02c5e269174079140bf2503695bf2c97, type: 3}
+      propertyPath: protEnabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2235759966133917092, guid: 02c5e269174079140bf2503695bf2c97, type: 3}
       propertyPath: baseDeathTimer
       value: 0.6
