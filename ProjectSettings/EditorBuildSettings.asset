@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Ground.unity
     guid: 8f0366ce39f9e6040944128b586ac640
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Outside.unity
     guid: 7090b70936cad024ab245e8dacabef01
+  - enabled: 1
+    path: Assets/Scenes/Dark.unity
+    guid: 4157b2a77b971fb4b828c55b6c3ca389
   m_configObjects: {}

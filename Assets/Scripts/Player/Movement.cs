@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour {
     public int prot = 0;
     public bool canProt = true;
     public bool protEnabled = false;
+    public bool canDash = true;
 
     [Header("References")]
 
@@ -73,6 +74,7 @@ public class Movement : MonoBehaviour {
     public float wallJumpDuration;
     public Vector2 wallJumpForce;
     public bool wallJumping;
+    public bool forcing;
 
     private bool jumpPressed = false;
     public bool canJump = true;
@@ -95,6 +97,7 @@ public class Movement : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && canProt){
                 canProt = false;
+                ApplyForce(3f, 6f, 1f);
                 if (prot == 1) {
                     shockwave.CallShockWave();
                     prot = 0;
@@ -163,7 +166,7 @@ public class Movement : MonoBehaviour {
 
     void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
-        if(!wallJumping){
+        if(!wallJumping || !forcing){
             if (horizontalPressed != 0) {
                 if (runSpeed < baseSpeed) {
                     runSpeed += 0.5f;
@@ -227,6 +230,12 @@ public class Movement : MonoBehaviour {
         }
     }
 
+    void ApplyForce(float xForce, float yForce, float duration) {
+        forcing = true;
+        body.AddForce(new Vector2(xForce, yForce));
+        Invoke("StopForce", duration);
+    }
+
     void Jump() {
         if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
@@ -269,6 +278,10 @@ public class Movement : MonoBehaviour {
 
     void StopWallJump() {
         wallJumping = false;
+    }
+
+    void StopForce() {
+        forcing = false;
     }
 
     public IEnumerator deathTimer(float waitTime)
