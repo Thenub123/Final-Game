@@ -1,42 +1,107 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEditor;
-// using UnityEngine;
-// using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.AnimatedValues;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class EventHandler : MonoBehaviour
-// {
-//         [HideInInspector] public int arrayIdx = 0;
-//         [HideInInspector] public string[] EventArray = new string[] {"Move", "Animate"};
+[System.Serializable]
+public class CMove {
 
-//         [Header("Move")]
-//         [HideInInspector] public cutsceneMove moveCol;
+    [Header("Move Player")]
+    public bool isMove = false;
+    public cutsceneMove moveCol;
+}
 
-// }
+[System.Serializable]
+public class CAnim {
 
-// [CustomEditor(typeof(EventHandler))]
+    [Header("Animation")]
+    public bool isAnim = false;
+    public Animator animator;
+    public string animValueType;
+    public string animValueName;
+    public string animValue;
 
-// public class EventEditor : Editor {
+    public bool hasReturn;
+    public string returnValueName;
+}
+[System.Serializable]
+public class CActive {
 
-//     SerializedProperty moveCol;
+    [Header("Set Active")]
 
-//     private void OnEnable() {
-//         moveCol = serializedObject.FindProperty("moveCol");
-//     }
-//     public override void OnInspectorGUI()
-//     {
-//         base.OnInspectorGUI();
+    public bool isActive;
+    public GameObject obj;
+    public bool setActive;
+}
 
-//         EventHandler script = (EventHandler)target;
+public class EventHandler : MonoBehaviour
+{
 
-//         GUIContent arrayLabel = new GUIContent("EventArray");
-//         script.arrayIdx = EditorGUILayout.Popup(arrayLabel, script.arrayIdx, script.EventArray);
+    public bool cutsceneEnabled = false;
 
-//         if(script.arrayIdx == 0) {
-//             EditorGUILayout.PropertyField(moveCol);
-//         }
+    [Header("Move Player")]
 
-        
+    public CMove moveFold;
 
-//     }
-// }
+
+
+    [Header("Animate")]
+
+    public CAnim animFold;
+
+    [Header("Active")]
+
+    public CActive activeFold;
+
+    [Header("Other Reference")]
+    public bool otherEVEnabled;
+    public EventHandler otherEV;
+
+
+    private void Update() {
+        if (cutsceneEnabled){
+
+            // Move
+
+            if(moveFold.isMove) {
+                moveFold.moveCol.moveEnabled = true;
+                if(moveFold.moveCol.done) {
+                    moveFold.moveCol.moveEnabled = false;
+                }
+            } else if (moveFold.moveCol != null) {
+                moveFold.moveCol.moveEnabled = false;
+            }
+
+            //Animate
+
+            if(animFold.isAnim) {
+                if(animFold.animValueType == "int") {
+                    animFold.animator.SetInteger(animFold.animValueName, int.Parse(animFold.animValue));
+                } else if (animFold.animValueType == "bool") {
+                    if (animFold.animValue == "true") animFold.animator.SetBool(animFold.animValueName, true);
+                    else animFold.animator.SetBool(animFold.animValueName, false);
+                } else {
+                    animFold.animator.SetFloat(animFold.animValueName, float.Parse(animFold.animValue));
+                }
+            }
+
+            //Active
+
+            if(activeFold.isActive) {
+                activeFold.obj.SetActive(activeFold.setActive);
+            }
+
+            //Referencing other script
+
+            if(otherEVEnabled && otherEV != null) {
+                otherEV.cutsceneEnabled = true;
+            }
+        } else if(otherEV != null) {
+            otherEV.cutsceneEnabled = false;
+        }
+    }
+
+}
+

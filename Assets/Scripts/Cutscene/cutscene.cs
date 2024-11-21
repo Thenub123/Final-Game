@@ -10,16 +10,19 @@ using Unity.VisualScripting;
 public class DialogueOrder {
 
     [Header("Dialogue Options")]
-    public bool dialogueBoxEnabled = true;
     public Sprite PersonImage;
     public string Text;
     public string Name;
     public bool Right;
 
-    [Header("Move Options")]
+    public float cutsceneSkipTime = 0.5f;
+    public float cutsceneCooldownTime = 0.5f;
 
-    public bool cutsceneMoveEnabled;
-    public cutsceneMove cutsceneMoveBox;
+    [Header("Event Options")]
+
+    public bool eventEnabled;
+
+    public EventHandler EV;
 }
 
 public class cutscene : MonoBehaviour
@@ -50,49 +53,41 @@ public class cutscene : MonoBehaviour
 
     private bool cutsceneEnabled = false;
 
-    private float cutsceneSkipTime = 0.5f;
-    private float cutsceneCooldownTime = 0.5f;
-
     private bool dialogueEnabled = true;
 
-    void Start() {
+    private void Start() {
         animator.SetBool("Open", false);
         dialogueLength = dialogueOrder.Length;
-        cutsceneSkipTime = cutsceneCooldownTime + cutsceneSkipTime;
-        StartCoroutine(cutsceneSkipCooldown(cutsceneSkipTime));
+        dialogueOrder[currentDialogue].cutsceneSkipTime = dialogueOrder[currentDialogue].cutsceneCooldownTime + dialogueOrder[currentDialogue].cutsceneSkipTime;
+        StartCoroutine(cutsceneSkipCooldown(dialogueOrder[currentDialogue].cutsceneSkipTime));
     }
 
-    void Update() {
+    private void Update() {
+        DialogueController();
+    }
+
+    private void DialogueController() {
         if (dialogueEnabled && cutsceneEnabled) {
             if (Input.GetKeyDown(KeyCode.Space)) skipPressed = true;
             if (Input.GetKeyUp(KeyCode.Space)) skipPressed = false;
-
-            if(dialogueOrder[currentDialogue].dialogueBoxEnabled) {
-                if (skipPressed && canSkip) {
-                    if (currentDialogue < dialogueLength - 1) {
-                        animator.SetBool("Open", false);
-                        canSkip = false;
-                        StartCoroutine(cutsceneCooldown(cutsceneCooldownTime));
-                        StartCoroutine(cutsceneSkipCooldown(cutsceneSkipTime));
-                    } else {
-                        animator.SetBool("Open", false);
-                        cutsceneEnabled = false;
-                        movement.canMove = true;
-                        dialogueEnabled = false;
-                    }
+            if (skipPressed && canSkip) {
+                if (currentDialogue < dialogueLength - 1) {
+                    animator.SetBool("Open", false);
+                    canSkip = false;
+                    StartCoroutine(cutsceneCooldown(dialogueOrder[currentDialogue].cutsceneCooldownTime));
+                    StartCoroutine(cutsceneSkipCooldown(dialogueOrder[currentDialogue].cutsceneSkipTime));
+                } else {
+                    
+                    animator.SetBool("Open", false);
+                    cutsceneEnabled = false;
+                    movement.canMove = true;
+                    dialogueEnabled = false;
                 }
-            } else {
-                animator.SetBool("Open", false);
             }
 
-            if(dialogueOrder[currentDialogue].cutsceneMoveEnabled) {
-                dialogueOrder[currentDialogue].cutsceneMoveBox.moveEnabled = true;
-                if(dialogueOrder[currentDialogue].cutsceneMoveBox.done) {
-                    dialogueOrder[currentDialogue].cutsceneMoveEnabled = false;
-                }
-            } else {
-                dialogueOrder[currentDialogue].cutsceneMoveBox.moveEnabled = false;
-            }
+            eventController();
+        } else {
+            if(dialogueOrder[currentDialogue].EV != null) dialogueOrder[currentDialogue].EV.cutsceneEnabled = false;
         }
     }
 
@@ -101,40 +96,39 @@ public class cutscene : MonoBehaviour
         if (other.gameObject.layer == 7) {
             if (dialogueEnabled) {
                 movement.horizontalPressed = 0;
-                if(dialogueOrder[currentDialogue].dialogueBoxEnabled) {
-                    if (dialogueOrder[currentDialogue].Right == true) {
-                        dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(287, -384);
-                        dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 180, 0);
-                        dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-91, -381);
-                        dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-91, -306);
-                    } else {
-                        dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-287, -384);
-                        dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
-                        dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -381);
-                        dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -306);
-                    }
-                    cutsceneEnabled = true;
-                    if (skipPressed) {
-                        skipPressed = false;
-                    }
-                    canSkip = true;
-                    animator.SetBool("Open", false);
-                    animator.SetBool("Open", true);
-                    person.sprite = dialogueOrder[currentDialogue].PersonImage;
-                    text.text = dialogueOrder[currentDialogue].Text;
-                    nameText.text = dialogueOrder[currentDialogue].Name;
-                    movement.canMove = false;
-                }
-
-                if(dialogueOrder[currentDialogue].cutsceneMoveEnabled) {
-                    dialogueOrder[currentDialogue].cutsceneMoveBox.moveEnabled = true;
-                    if(dialogueOrder[currentDialogue].cutsceneMoveBox.done) {
-                        dialogueOrder[currentDialogue].cutsceneMoveEnabled = false;
-                    }
+                if (dialogueOrder[currentDialogue].Right == true) {
+                    dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(287, -384);
+                    dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 180, 0);
+                    dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-91, -381);
+                    dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-91, -306);
                 } else {
-                    dialogueOrder[currentDialogue].cutsceneMoveBox.moveEnabled = false;  
+                    dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-287, -384);
+                    dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
+                    dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -381);
+                    dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -306);
                 }
+                cutsceneEnabled = true;
+                if (skipPressed) {
+                    skipPressed = false;
+                }
+                canSkip = true;
+                animator.SetBool("Open", true);
+                person.sprite = dialogueOrder[currentDialogue].PersonImage;
+                text.text = dialogueOrder[currentDialogue].Text;
+                nameText.text = dialogueOrder[currentDialogue].Name;
+
+
+                movement.canMove = false;
+
+                DialogueController();
+                eventController();
             }
+        }
+    }
+
+    private void eventController() {
+        if(dialogueOrder[currentDialogue].eventEnabled) {
+            dialogueOrder[currentDialogue].EV.cutsceneEnabled = true;
         }
     }
 
@@ -164,5 +158,8 @@ public class cutscene : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         canSkip = true;
+        if(currentDialogue > 0) {
+            if(dialogueOrder[currentDialogue - 1].EV != null) dialogueOrder[currentDialogue - 1].EV.cutsceneEnabled = false;
+        } 
     }
 }

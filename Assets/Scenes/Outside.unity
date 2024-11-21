@@ -4962,6 +4962,38 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &39006577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39006578}
+  m_Layer: 0
+  m_Name: TestAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39006578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39006577}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 48, y: 27, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 546374847}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44031417
 GameObject:
   m_ObjectHideFlags: 0
@@ -12550,6 +12582,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &135092881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135092882}
+  - component: {fileID: 135092883}
+  m_Layer: 0
+  m_Name: Anim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &135092882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135092881}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.573, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1858819622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135092883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135092881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb382068a0adfa4d97be45944e1a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneEnabled: 0
+  moveFold:
+    isMove: 0
+    moveCol: {fileID: 0}
+  animFold:
+    isAnim: 1
+    animator: {fileID: 546374848}
+    animValueType: bool
+    animValueName: Running
+    animValue: true
+    hasReturn: 0
+    returnValueName: 
+  activeFold:
+    isActive: 1
+    obj: {fileID: 546374845}
+    setActive: 1
+  otherEVEnabled: 0
+  otherEV: {fileID: 0}
 --- !u!1 &135650005
 GameObject:
   m_ObjectHideFlags: 0
@@ -17654,84 +17748,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueOrder:
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
+  - PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
     Text: This place is pretty big isn't it.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: Yea.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 6bf470db830ccbd48aeb79a2f6b4ca2d, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 6bf470db830ccbd48aeb79a2f6b4ca2d, type: 3}
     Text: It's crazy honestly.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
     Text: I've never been in a place so big and vast...
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: ...And still feel so empty
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I don't want to go back... Everyone is gone; EverythingI loved; Everything
       I hated.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 2bf7b85e835e78a49bd58085dac1626b, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 2bf7b85e835e78a49bd58085dac1626b, type: 3}
     Text: I can't come with you.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I'm sorry.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I hope you find... her...
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
@@ -26372,6 +26477,112 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &546374845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546374847}
+  - component: {fileID: 546374846}
+  - component: {fileID: 546374848}
+  m_Layer: 7
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &546374846
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546374845}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 1526073110, guid: 70d5accb88e8db24d813e9980f0d969c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.625, y: 0.5625}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &546374847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546374845}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0007916689, y: 0, z: 0}
+  m_LocalScale: {x: 0.020833334, y: 0.037037037, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39006578}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &546374848
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546374845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8d13040cf716064d8c6a700ea885db8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &555561047
 GameObject:
   m_ObjectHideFlags: 0
@@ -34178,6 +34389,131 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1187081321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.317}
+--- !u!1 &649549103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649549107}
+  - component: {fileID: 649549105}
+  - component: {fileID: 649549104}
+  - component: {fileID: 649549106}
+  m_Layer: 0
+  m_Name: Move 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &649549104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649549103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb382068a0adfa4d97be45944e1a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneEnabled: 0
+  moveFold:
+    isMove: 1
+    moveCol: {fileID: 649549105}
+  animFold:
+    isAnim: 0
+    animator: {fileID: 0}
+    animValueType: 
+    animValueName: 
+    animValue: 
+    hasReturn: 0
+    returnValueName: 
+  activeFold:
+    isActive: 0
+    obj: {fileID: 0}
+    setActive: 0
+  otherEVEnabled: 0
+  otherEV: {fileID: 0}
+--- !u!114 &649549105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649549103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985829bee3293954a83bc0c497aef577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveEnabled: 0
+  movement: {fileID: 1945619917}
+  player: {fileID: 1945619916}
+  done: 0
+--- !u!61 &649549106
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649549103}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &649549107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649549103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.24, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1858819622}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &658583802
 GameObject:
   m_ObjectHideFlags: 0
@@ -62789,6 +63125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1257327638}
   - component: {fileID: 1257327637}
+  - component: {fileID: 1257327640}
+  - component: {fileID: 1257327639}
   m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
@@ -62821,12 +63159,87 @@ Transform:
   m_GameObject: {fileID: 1257327636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.573, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1858819622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1257327639
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257327636}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1257327640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257327636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb382068a0adfa4d97be45944e1a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneEnabled: 0
+  moveFold:
+    isMove: 1
+    moveCol: {fileID: 1257327637}
+  animFold:
+    isAnim: 0
+    animator: {fileID: 0}
+    animValueType: 
+    animValueName: 
+    animValue: 
+    hasReturn: 0
+    returnValueName: 
+  activeFold:
+    isActive: 0
+    obj: {fileID: 0}
+    setActive: 0
+  otherEVEnabled: 0
+  otherEV: {fileID: 0}
 --- !u!1 &1261605310
 GameObject:
   m_ObjectHideFlags: 0
@@ -74616,84 +75029,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueOrder:
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: Thia?
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 1
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
     Text: Yeah?
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I'm sorry.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
     Text: Mhm?
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: What is this all about? Why do you want to go back? It's not like you have
       it worse now.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
     Text: Anyways, nothing is gonna change you know.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I can change things.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: That's not really how this works, right? I mean you left for a reason.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I just... I'm...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
+  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: It's okay, I'll see you around I guess.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
@@ -88032,20 +88456,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueOrder:
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: 21300000, guid: 39d4402b0c1050a4691994a0a4d21f34, type: 3}
+  - PersonImage: {fileID: 21300000, guid: 39d4402b0c1050a4691994a0a4d21f34, type: 3}
     Text: Test
     Name: Jit
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1257327637}
-  - dialogueBoxEnabled: 1
-    PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 1
+    EV: {fileID: 1257327640}
+  - PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
     Text: Still Test
     Name: Jit
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1257327637}
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 1
+    EV: {fileID: 135092883}
+  - PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
+    Text: ...
+    Name: Jit
+    Right: 0
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 1
+    EV: {fileID: 649549104}
+  - PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
+    Text: Done
+    Name: Jit
+    Right: 1
+    cutsceneSkipTime: 0.5
+    cutsceneCooldownTime: 0.5
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
@@ -88066,6 +88508,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257327638}
+  - {fileID: 135092882}
+  - {fileID: 649549107}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1858819623
@@ -103322,6 +103766,7 @@ SceneRoots:
   - {fileID: 71349479}
   - {fileID: 435174721}
   - {fileID: 1345682556}
+  - {fileID: 39006578}
   - {fileID: 6942140394712549414}
   - {fileID: 1691338469721382910}
   - {fileID: 176142306}

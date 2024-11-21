@@ -8071,79 +8071,79 @@ MonoBehaviour:
     Text: This place is pretty big isn't it.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: Yea.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 6bf470db830ccbd48aeb79a2f6b4ca2d, type: 3}
     Text: It's crazy honestly.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
     Text: I've never been in a place so big and vast...
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: ...And still feel so empty
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I don't want to go back... Everyone is gone; EverythingI loved; Everything
       I hated.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 2bf7b85e835e78a49bd58085dac1626b, type: 3}
     Text: I can't come with you.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I'm sorry.
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
     Text: I hope you find... her...
     Name: Loreia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 385080714}
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
@@ -62519,79 +62519,79 @@ MonoBehaviour:
     Text: Thia?
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 1
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
     Text: Yeah?
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I'm sorry.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
     Text: Mhm?
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: What is this all about? Why do you want to go back? It's not like you have
       it worse now.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
     Text: Anyways, nothing is gonna change you know.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: ...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I can change things.
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: That's not really how this works, right? I mean you left for a reason.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
     Text: I just... I'm...
     Name: Phoarus
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
     Text: It's okay, I'll see you around I guess.
     Name: Thia
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1196125573}
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
@@ -76424,15 +76424,15 @@ MonoBehaviour:
     Text: Test
     Name: Jit
     Right: 0
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1257327637}
+    eventEnabled: 0
+    EV: {fileID: 0}
   - dialogueBoxEnabled: 1
     PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
     Text: Still Test
     Name: Jit
     Right: 1
-    cutsceneMoveEnabled: 0
-    cutsceneMoveBox: {fileID: 1257327637}
+    eventEnabled: 0
+    EV: {fileID: 0}
   dialogueBox: {fileID: 103386583}
   person: {fileID: 226270526}
   movement: {fileID: 1945619917}
