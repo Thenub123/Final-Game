@@ -51,6 +51,8 @@ public class Movement : MonoBehaviour {
 
     public Shockwave shockwave;
 
+    public LayerMask spikeLayer;
+
     public Transform edge_position;
     public Sprite jumpSprite;
 
@@ -98,13 +100,6 @@ public class Movement : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && canProt){
                 canProt = false;
-                if(canDash && !forcing) {
-                    forcing = true;
-                    body.velocity = new Vector2(0, 0);
-                    canDash = false;
-                    
-                    Invoke("StopForce", 0.1f);
-                }
                 
                 if (prot == 1) {
                     shockwave.CallShockWave();
@@ -149,11 +144,12 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         if (!isDead) {
+            SpikeCheck();
             Jump();
             Move();
             WallJump();
             if(forcing) {
-                body.velocity = new Vector2(horizontalPressed * 8f,  verticalPressed * 8f);
+                body.velocity = new Vector2(body.velocity.x,6f);
             }
         }
     }
@@ -212,6 +208,20 @@ public class Movement : MonoBehaviour {
             }
         }
 
+    void SpikeCheck() {
+        RaycastHit2D raycastDown = Physics2D.Raycast(transform.position, Vector2.down, 0.25f, spikeLayer);
+
+        if(raycastDown && !forcing) {
+            forcing = true;
+            body.velocity = new Vector2(0, 0);
+            canDash = false;
+            
+            Invoke("StopForce", 0.1f);
+            shockwave.UnCallShockWave();
+            prot = 1;
+        }
+    }
+
     void Anim() {
 
         edgeCheck = Physics2D.OverlapBox(edge_position.position, new Vector2(.03f, 0.07f), 0, groundLayer);
@@ -246,9 +256,6 @@ public class Movement : MonoBehaviour {
             animator.SetBool("Running", false);
             animator.SetBool("isDead", true);
         }
-    }
-
-    void ApplyForce(float xForce, float yForce) {
     }
 
     void Jump() {
@@ -308,9 +315,15 @@ public class Movement : MonoBehaviour {
     }
 
     public void Die() {
-        animator.SetBool("Running", false);
-        isDead = true;
-        body.constraints = RigidbodyConstraints2D.FreezeAll;
-        StartCoroutine(deathTimer(baseDeathTimer));
+        if(prot == 1) {
+            animator.SetBool("Running", false);
+            isDead = true;
+            body.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(deathTimer(baseDeathTimer));
+        } else {
+            shockwave.UnCallShockWave();
+            prot = 1;
+        }
+        
     }
 }

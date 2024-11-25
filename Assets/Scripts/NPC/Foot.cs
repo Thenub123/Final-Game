@@ -34,7 +34,7 @@ public class FootPositioner : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(NPCObj.transform.position + new Vector3(footDisplacementOnX, 0, 0), Vector2.down, Color.green);
+        // Debug.DrawRay(NPCObj.transform.position + new Vector3(footDisplacementOnX, 0, 0), Vector2.down, Color.green);
         UpdateBalance();
 
         if (!isBalanced && lerp > 1)
