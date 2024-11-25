@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour {
     public float groundCheckRadius;
 
     public int horizontalPressed = 0;
+    public int verticalPressed = 0;
     public int lastHorizontalPressed = 0;
 
     public bool isDead = false;
@@ -97,7 +98,14 @@ public class Movement : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && canProt){
                 canProt = false;
-                ApplyForce(3f, 6f, 1f);
+                if(canDash && !forcing) {
+                    forcing = true;
+                    body.velocity = new Vector2(0, 0);
+                    canDash = false;
+                    
+                    Invoke("StopForce", 0.1f);
+                }
+                
                 if (prot == 1) {
                     shockwave.CallShockWave();
                     prot = 0;
@@ -111,6 +119,8 @@ public class Movement : MonoBehaviour {
                 }   
             }
 
+            if(isGrounded) canDash = true;
+
             if (Input.GetKeyDown(KeyCode.Space)) jumpPressed = true;
             if (Input.GetKeyUp(KeyCode.Space)) jumpPressed = false;
             
@@ -118,6 +128,11 @@ public class Movement : MonoBehaviour {
             if (Input.GetKey(KeyCode.D)) horizontalPressed = 1;
             if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) horizontalPressed = 0;
             if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) horizontalPressed = 0;
+
+            if (Input.GetKey(KeyCode.S)) verticalPressed = -1;
+            if (Input.GetKey(KeyCode.W)) verticalPressed = 1;
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.W)) verticalPressed = 0;
+            if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) verticalPressed = 0;
 
 
         } else {
@@ -137,6 +152,9 @@ public class Movement : MonoBehaviour {
             Jump();
             Move();
             WallJump();
+            if(forcing) {
+                body.velocity = new Vector2(horizontalPressed * 8f,  verticalPressed * 8f);
+            }
         }
     }
 
@@ -230,28 +248,25 @@ public class Movement : MonoBehaviour {
         }
     }
 
-    void ApplyForce(float xForce, float yForce, float duration) {
-        forcing = true;
-        body.AddForce(new Vector2(xForce, yForce));
-        Invoke("StopForce", duration);
+    void ApplyForce(float xForce, float yForce) {
     }
 
     void Jump() {
-        if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
+        if ((coyoteTimer > 0 && jumpPressed && !forcing) || (jumpPressed && isGrounded && canJump && !forcing)) {
             jumpForce = baseJumpForce;
             coyoteTimer = 0;
             canJump = false;
             body.velocity = new Vector2(body.velocity.x, baseJumpForce);
         }
         
-        if ((wallCoyoteTimer > 0 && jumpPressed && canJump) || (jumpPressed && canJump && isSliding)) {
+        if ((wallCoyoteTimer > 0 && jumpPressed && canJump && !forcing) || (jumpPressed && canJump && isSliding && !forcing)) {
             wallCoyoteTimer = 0;
             wallJumping = true;
             canJump = false;
             Invoke("StopWallJump", wallJumpDuration);
         }
 
-        if (!isGrounded && body.velocity.y > 0 && !jumpPressed) {
+        if (!isGrounded && body.velocity.y > 0 && !jumpPressed && !forcing) {
             if (jumpForce > -0.4f) {
                 jumpForce -= 0.1f;
             }

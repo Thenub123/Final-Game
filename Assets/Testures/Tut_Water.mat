@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
-  m_Shader: {fileID: -6465566751694194690, guid: 777075c9d6a8f674cb1c5b70a3074a4a, type: 3}
+  m_Name: Tut_Water
+  m_Shader: {fileID: -6465566751694194690, guid: 79a8a62cb8d73324b87d1e7922a131e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -41,7 +41,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Cam:
-        m_Texture: {fileID: 8400000, guid: 04fab8def14625c47b75b606630a498b, type: 2}
+        m_Texture: {fileID: 8400000, guid: 15d4c17e83c9eed47a0c8bd665c890da, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CameraSortingLayer:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -79,11 +83,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _GradientAmount: 0.71
     - _Refraction: 1
     - _waterSpeed: 0.24
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RipplePos: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 14.52, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
