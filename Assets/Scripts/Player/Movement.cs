@@ -84,6 +84,9 @@ public class Movement : MonoBehaviour {
 
     public Vector2 checkPoint;
 
+    public ParticleSystem _slideParticle;
+    public ParticleSystem _runParticle;
+
     void Awake() {
         body = GetComponent<Rigidbody2D>();
         sr = spriteObj.GetComponent<SpriteRenderer>();
@@ -157,21 +160,26 @@ public class Movement : MonoBehaviour {
     void WallJump() {
         isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(.19f, 0.44f), 0, groundLayer);
 
+        var _slideEmission = _slideParticle.emission;
+
         if(isWallTouch && !isGrounded && horizontalPressed != 0) {
             isSliding = true;
         } else {
             isSliding = false;
         }
         if(isSliding) {
+            _slideEmission.enabled = true;
             wallCoyoteTimer = wallCoyoteTiming;
             body.velocity = new Vector2 (body.velocity.x, Mathf.Clamp(body.velocity.y, -wallSlidingSpeed, float.MaxValue));
             wallDir = horizontalPressed;
+            
         }
         if(wallJumping) {
             body.velocity = new Vector2(-wallDir*wallJumpForce.x, wallJumpForce.y);
         }
 
         if (!isSliding) {
+            _slideEmission.enabled = false;
             if (wallCoyoteTimer > 0) {
                 wallCoyoteTimer -= 0.1f;
             }
@@ -181,7 +189,10 @@ public class Movement : MonoBehaviour {
     void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
         if(!wallJumping || !forcing){
+            var _runEmission = _runParticle.emission;
             if (horizontalPressed != 0) {
+                
+                if(isGrounded) _runEmission.enabled = true; else _runEmission.enabled = false;
                 if (runSpeed < baseSpeed) {
                     runSpeed += 0.5f;
                 }
@@ -195,6 +206,7 @@ public class Movement : MonoBehaviour {
             }
             else
             {
+                _runEmission.enabled = false;
                 animator.SetBool("Running", false);
                 if (runSpeed > 0.1f) {
                     runSpeed -= 0.4f;
@@ -205,8 +217,8 @@ public class Movement : MonoBehaviour {
                 Vector3 targetVelocity = new Vector2(horizontalPressed * runSpeed, body.velocity.y);
                 body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             }
-            }
         }
+    }
 
     void SpikeCheck() {
         RaycastHit2D raycastDown = Physics2D.Raycast(transform.position, Vector2.down, 0.25f, spikeLayer);
