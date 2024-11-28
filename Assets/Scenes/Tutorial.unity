@@ -69874,6 +69874,9 @@ MonoBehaviour:
   _shockWaveTime: 0.75
   PlayerPos: {fileID: 1945619921}
   dis: 1429
+  particles: []
+  freezeParticle: 0
+  rippleMask: {fileID: 0}
 --- !u!212 &1083463822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -105983,7 +105986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1675351637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135836,7 +135839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230098193102340142, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339879254442992057, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_Color.b
