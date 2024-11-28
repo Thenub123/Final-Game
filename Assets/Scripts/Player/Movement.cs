@@ -45,7 +45,6 @@ public class Movement : MonoBehaviour {
     public int prot = 0;
     public bool canProt = true;
     public bool protEnabled = false;
-    public bool canDash = true;
 
     [Header("References")]
 
@@ -77,7 +76,6 @@ public class Movement : MonoBehaviour {
     public float wallJumpDuration;
     public Vector2 wallJumpForce;
     public bool wallJumping;
-    public bool forcing;
 
     private bool jumpPressed = false;
     public bool canJump = true;
@@ -117,8 +115,6 @@ public class Movement : MonoBehaviour {
                 }   
             }
 
-            if(isGrounded) canDash = true;
-
             if (Input.GetKeyDown(KeyCode.Space)) jumpPressed = true;
             if (Input.GetKeyUp(KeyCode.Space)) jumpPressed = false;
             
@@ -147,13 +143,9 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         if (!isDead) {
-            SpikeCheck();
             Jump();
             Move();
             WallJump();
-            if(forcing) {
-                body.velocity = new Vector2(body.velocity.x,6f);
-            }
         }
     }
 
@@ -188,7 +180,7 @@ public class Movement : MonoBehaviour {
 
     void Move() {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.transform.position, groundCheckRadius, groundLayer);
-        if(!wallJumping || !forcing){
+        if(!wallJumping){
             var _runEmission = _runParticle.emission;
             if (horizontalPressed != 0) {
                 
@@ -217,20 +209,6 @@ public class Movement : MonoBehaviour {
                 Vector3 targetVelocity = new Vector2(horizontalPressed * runSpeed, body.velocity.y);
                 body.velocity = Vector3.SmoothDamp(body.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
             }
-        }
-    }
-
-    void SpikeCheck() {
-        RaycastHit2D raycastDown = Physics2D.Raycast(transform.position, Vector2.down, 0.25f, spikeLayer);
-
-        if(raycastDown && !forcing) {
-            forcing = true;
-            body.velocity = new Vector2(0, 0);
-            canDash = false;
-            
-            Invoke("StopForce", 0.1f);
-            shockwave.UnCallShockWave();
-            prot = 1;
         }
     }
 
@@ -271,21 +249,21 @@ public class Movement : MonoBehaviour {
     }
 
     void Jump() {
-        if ((coyoteTimer > 0 && jumpPressed && !forcing) || (jumpPressed && isGrounded && canJump && !forcing)) {
+        if ((coyoteTimer > 0 && jumpPressed) || (jumpPressed && isGrounded && canJump)) {
             jumpForce = baseJumpForce;
             coyoteTimer = 0;
             canJump = false;
             body.velocity = new Vector2(body.velocity.x, baseJumpForce);
         }
         
-        if ((wallCoyoteTimer > 0 && jumpPressed && canJump && !forcing) || (jumpPressed && canJump && isSliding && !forcing)) {
+        if ((wallCoyoteTimer > 0 && jumpPressed && canJump) || (jumpPressed && canJump && isSliding)) {
             wallCoyoteTimer = 0;
             wallJumping = true;
             canJump = false;
             Invoke("StopWallJump", wallJumpDuration);
         }
 
-        if (!isGrounded && body.velocity.y > 0 && !jumpPressed && !forcing) {
+        if (!isGrounded && body.velocity.y > 0 && !jumpPressed) {
             if (jumpForce > -0.4f) {
                 jumpForce -= 0.1f;
             }
@@ -314,10 +292,6 @@ public class Movement : MonoBehaviour {
         wallJumping = false;
     }
 
-    void StopForce() {
-        forcing = false;
-    }
-
     public IEnumerator deathTimer(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -327,15 +301,13 @@ public class Movement : MonoBehaviour {
     }
 
     public void Die() {
-        if(prot == 1) {
-            animator.SetBool("Running", false);
-            isDead = true;
-            body.constraints = RigidbodyConstraints2D.FreezeAll;
-            StartCoroutine(deathTimer(baseDeathTimer));
-        } else {
+        animator.SetBool("Running", false);
+        isDead = true;
+        body.constraints = RigidbodyConstraints2D.FreezeAll;
+        StartCoroutine(deathTimer(baseDeathTimer));
+        if(prot == 0) {
             shockwave.UnCallShockWave();
             prot = 1;
         }
-        
     }
 }
