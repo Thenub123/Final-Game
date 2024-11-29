@@ -5760,7 +5760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &102706372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19197,7 +19197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &260540850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21787,7 +21787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &341625675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28125,7 +28125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &468694646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42279,7 +42279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &630837226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45927,7 +45927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &709557163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58981,7 +58981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &887496996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59934,7 +59934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &931802638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66064,7 +66064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &967997803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68760,7 +68760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1021567711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69033,7 +69033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1041210569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80461,7 +80461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1139124406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83045,7 +83045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1234846612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84632,7 +84632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1344582761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94833,7 +94833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1497663562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105986,7 +105986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1675351637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108917,7 +108917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1763387610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110271,7 +110271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1806735594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112891,7 +112891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1866364577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135839,7 +135839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230098193102340142, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5339879254442992057, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_Color.b
@@ -135855,7 +135855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5385800976721914650, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_Color.a
-      value: 0.78039217
+      value: 0.90588236
       objectReference: {fileID: 0}
     - target: {fileID: 5560129119519554866, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_Color.b
