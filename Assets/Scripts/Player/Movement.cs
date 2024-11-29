@@ -85,6 +85,8 @@ public class Movement : MonoBehaviour {
     public ParticleSystem _slideParticle;
     public ParticleSystem _runParticle;
 
+
+
     void Awake() {
         body = GetComponent<Rigidbody2D>();
         sr = spriteObj.GetComponent<SpriteRenderer>();
