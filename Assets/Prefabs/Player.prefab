@@ -63,12 +63,20 @@ MonoBehaviour:
   wallDir: 0
   groundCheckRadius: 0.095
   horizontalPressed: 0
+  verticalPressed: 0
   lastHorizontalPressed: 0
   isDead: 0
   baseDeathTimer: 0.6
   isFrozen: 0
   canMove: 1
   edgeCheck: 0
+  prot: 0
+  canProt: 1
+  protEnabled: 0
+  shockwave: {fileID: 0}
+  spikeLayer:
+    serializedVersion: 2
+    m_Bits: 0
   edge_position: {fileID: 9043422082842193734}
   jumpSprite: {fileID: 1526073110, guid: 70d5accb88e8db24d813e9980f0d969c, type: 3}
   player_colider: {fileID: 1619255081855796788}
@@ -86,6 +94,8 @@ MonoBehaviour:
   wallJumping: 0
   canJump: 1
   checkPoint: {x: 0, y: 0}
+  _slideParticle: {fileID: 0}
+  _runParticle: {fileID: 0}
 --- !u!50 &6697952647989042110
 Rigidbody2D:
   serializedVersion: 4
@@ -99,9 +109,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.1
   m_Material: {fileID: 6200000, guid: 3057ea79f07abaa46b8170c10d340807, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5229,12 +5239,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1526073110, guid: 70d5accb88e8db24d813e9980f0d969c, type: 3}
+  m_Sprite: {fileID: -1948395330, guid: 70d5accb88e8db24d813e9980f0d969c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.625, y: 0.5625}
+  m_Size: {x: 0.625, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
