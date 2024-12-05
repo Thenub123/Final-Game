@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
+
+[System.Serializable]
+public class CDialogue {
+
+    [Header("Dialogue Options")]
+    public bool isDialogue;
+    public bool timedDialogue;
+    public GameObject dialogueBox;
+    public Sprite PersonImage;
+    public string Text;
+    public string Name;
+    public bool Right;
+}
+
 
 [System.Serializable]
 public class CMove {
 
     [Header("Move Player")]
-    public bool isMove = false;
+    public bool isMove;
     public cutsceneMove moveCol;
 }
 
@@ -16,7 +32,7 @@ public class CMove {
 public class CAnim {
 
     [Header("Animation")]
-    public bool isAnim = false;
+    public bool isAnim;
     public Animator animator;
     public string animValueType;
     public string animValueName;
@@ -52,13 +68,22 @@ public class CZoom {
 public class EventHandler : MonoBehaviour
 {
 
-    public bool cutsceneEnabled = false;
+    [Header("Start / Finish")]
+    public bool cutsceneEnabled;
+    public bool done;
+
+    [Header("Timed")]
+    public bool timed;
+    public float timeToDone;
+
+    [Header("Dialogue")]
+
+    public CDialogue dialogueFold;
+    private bool canSkipDialogue;
 
     [Header("Move Player")]
 
     public CMove moveFold;
-
-
 
     [Header("Animate")]
 
@@ -79,6 +104,39 @@ public class EventHandler : MonoBehaviour
 
     private void Update() {
         if (cutsceneEnabled){
+
+            if(timed) {
+                StartCoroutine(doneTimer(timeToDone));
+                timed = false;
+            }
+
+            // Dialogue
+
+            // dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-287, -384);
+            // dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
+            // dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -381);
+            // dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -306);
+
+            if(dialogueFold.isDialogue) {
+                Animator D_animator = dialogueFold.dialogueBox.GetComponent<Animator>();
+                Image D_personImage = dialogueFold.dialogueBox.transform.GetChild(1).gameObject.GetComponent<Image>();
+                TMP_Text D_text = dialogueFold.dialogueBox.transform.GetChild(2).gameObject.GetComponent<TMP_Text>();
+                TMP_Text D_name = dialogueFold.dialogueBox.transform.GetChild(3).gameObject.GetComponent<TMP_Text>();
+                D_animator.SetBool("Open", true);
+
+                D_personImage.sprite = dialogueFold.PersonImage;
+                D_text.text = dialogueFold.Text;
+                D_name.text = dialogueFold.Name;
+
+                StartCoroutine(canSkipTimer(1f));
+                dialogueFold.isDialogue = false;
+            }
+
+            if (canSkipDialogue && Input.GetKey(KeyCode.Space) && !dialogueFold.timedDialogue) {
+                Animator D_animator = dialogueFold.dialogueBox.GetComponent<Animator>();
+                D_animator.SetBool("Open", false);
+                StartCoroutine(doneTimer(0.5f));
+            }
 
             // Move
 
@@ -143,6 +201,19 @@ public class EventHandler : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public IEnumerator doneTimer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        done = true;
+        cutsceneEnabled = false;
+    }
+
+    public IEnumerator canSkipTimer(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        canSkipDialogue = true;
     }
 
 }

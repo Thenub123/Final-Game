@@ -783,7 +783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &53517298
 Animator:
   serializedVersion: 5
@@ -12211,7 +12211,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &342999189
 GameObject:
@@ -24407,7 +24407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &660027671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26368,7 +26368,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -26421,7 +26421,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -26474,8 +26474,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 6.283185
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -26595,7 +26595,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.11, y: 0.40281284, z: 1}
+    m_Scale: {x: 0.05165677, y: 0.40281284, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -26788,7 +26788,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -65186,7 +65186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1467274308
 GameObject:
@@ -68171,7 +68171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1503442850
 GameObject:
@@ -87334,7 +87334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1699551940
 GameObject:
@@ -96769,7 +96769,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1803390887
 GameObject:
@@ -97413,7 +97413,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1821396462
 GameObject:
@@ -113846,7 +113846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1996970454
 Animator:
   serializedVersion: 5
