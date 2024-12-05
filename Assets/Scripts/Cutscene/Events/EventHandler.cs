@@ -35,6 +35,20 @@ public class CActive {
     public bool setActive;
 }
 
+[System.Serializable]
+public class CZoom {
+
+    [Header("Camera Zoom")]
+
+    public bool isZoom;
+    public float startZoom;
+    public float endZoom;
+    public Vector2 startPos;
+    public Vector2 endPos;
+    public float time;
+    public RectTransform cam;
+}
+
 public class EventHandler : MonoBehaviour
 {
 
@@ -53,6 +67,10 @@ public class EventHandler : MonoBehaviour
     [Header("Active")]
 
     public CActive activeFold;
+
+    [Header("Zoom")]
+    public CZoom zoomFold;
+    private Coroutine zoomAction;
 
     [Header("Other Reference")]
     public bool otherEVEnabled;
@@ -92,6 +110,13 @@ public class EventHandler : MonoBehaviour
                 activeFold.obj.SetActive(activeFold.setActive);
             }
 
+            //Zoom
+
+            if(zoomFold.isZoom) {
+                zoomAction = StartCoroutine(ZoomAction(zoomFold.startZoom, zoomFold.endZoom, zoomFold.startPos, zoomFold.endPos, zoomFold.time, zoomFold.cam));
+                zoomFold.isZoom = false;
+            }
+
             //Referencing other script
 
             if(otherEVEnabled && otherEV != null) {
@@ -99,6 +124,24 @@ public class EventHandler : MonoBehaviour
             }
         } else if(otherEV != null) {
             otherEV.cutsceneEnabled = false;
+        }
+    }
+
+    private IEnumerator ZoomAction(float startZoom, float endZoom, Vector2 startPos, Vector2 endPos, float time, RectTransform cam) {
+        Vector2 posLerp;
+        float sizeAmount = 0f;
+
+        float elapsedTime = 0f;
+        while(elapsedTime < time) {
+            elapsedTime += Time.deltaTime;
+
+            posLerp = new Vector2(Mathf.Lerp(startPos.x, endPos.x, (elapsedTime / time)), Mathf.Lerp(startPos.y, endPos.y, (elapsedTime / time)));
+            sizeAmount = Mathf.Lerp(startZoom, endZoom, (elapsedTime / time));
+
+            cam.localScale = new Vector2(sizeAmount, sizeAmount);
+            cam.localPosition = posLerp;
+
+            yield return null;
         }
     }
 

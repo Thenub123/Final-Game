@@ -11238,7 +11238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &145877471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22185,7 +22185,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &357902747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68072,6 +68072,14 @@ MonoBehaviour:
     isActive: 0
     obj: {fileID: 608936204}
     setActive: 0
+  zoomFold:
+    isZoom: 0
+    startZoom: 0
+    endZoom: 0
+    startPos: {x: 0, y: 0}
+    endPos: {x: 0, y: 0}
+    time: 0
+    cam: {fileID: 0}
   otherEVEnabled: 0
   otherEV: {fileID: 0}
 --- !u!4 &1000955982
@@ -106575,6 +106583,14 @@ MonoBehaviour:
     isActive: 1
     obj: {fileID: 608936204}
     setActive: 0
+  zoomFold:
+    isZoom: 0
+    startZoom: 0
+    endZoom: 0
+    startPos: {x: 0, y: 0}
+    endPos: {x: 0, y: 0}
+    time: 0
+    cam: {fileID: 0}
   otherEVEnabled: 0
   otherEV: {fileID: 0}
 --- !u!1 &1724897850
@@ -109918,6 +109934,14 @@ MonoBehaviour:
     isActive: 1
     obj: {fileID: 608936204}
     setActive: 0
+  zoomFold:
+    isZoom: 0
+    startZoom: 0
+    endZoom: 0
+    startPos: {x: 0, y: 0}
+    endPos: {x: 0, y: 0}
+    time: 0
+    cam: {fileID: 0}
   otherEVEnabled: 0
   otherEV: {fileID: 0}
 --- !u!4 &1789729185
@@ -111669,6 +111693,14 @@ MonoBehaviour:
     isActive: 0
     obj: {fileID: 145877470}
     setActive: 1
+  zoomFold:
+    isZoom: 0
+    startZoom: 0
+    endZoom: 0
+    startPos: {x: 0, y: 0}
+    endPos: {x: 0, y: 0}
+    time: 0
+    cam: {fileID: 0}
   otherEVEnabled: 0
   otherEV: {fileID: 0}
 --- !u!1 &1854471425
@@ -135839,7 +135871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5230098193102340142, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339879254442992057, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
       propertyPath: m_Color.b
