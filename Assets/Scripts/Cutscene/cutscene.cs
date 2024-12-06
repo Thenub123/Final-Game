@@ -16,11 +16,11 @@ public class cutscene : MonoBehaviour
 
     public Movement movement;
 
-    public int currentEvent = 0;
+    private int currentEvent = 0;
 
-    public int eventLength;
+    private int eventLength;
 
-    public bool cutsceneEnabled = false;
+    private bool cutsceneEnabled = false;
 
     private void Start() {
         eventLength = events.Length;
