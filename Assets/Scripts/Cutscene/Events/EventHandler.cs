@@ -11,12 +11,11 @@ public class CDialogue {
 
     [Header("Dialogue Options")]
     public bool isDialogue;
-    public bool timedDialogue;
     public GameObject dialogueBox;
     public Sprite PersonImage;
     public string Text;
     public string Name;
-    public bool Right;
+    public int Right = 1;
 }
 
 
@@ -31,7 +30,7 @@ public class CMove {
 [System.Serializable]
 public class CAnim {
 
-    [Header("Animation")]
+    [Header("Animation (int, bool)")]
     public bool isAnim;
     public Animator animator;
     public string animValueType;
@@ -112,10 +111,7 @@ public class EventHandler : MonoBehaviour
 
             // Dialogue
 
-            // dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(-287, -384);
-            // dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, 0);
-            // dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -381);
-            // dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(91, -306);
+
 
             if(dialogueFold.isDialogue) {
                 Animator D_animator = dialogueFold.dialogueBox.GetComponent<Animator>();
@@ -129,10 +125,16 @@ public class EventHandler : MonoBehaviour
                 D_name.text = dialogueFold.Name;
 
                 StartCoroutine(canSkipTimer(1f));
+
+                dialogueFold.dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(dialogueFold.Right * -290, -384);
+                dialogueFold.dialogueBox.transform.GetChild(1).gameObject.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 90 - (dialogueFold.Right * 90), 0);
+                dialogueFold.dialogueBox.transform.GetChild(2).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(dialogueFold.Right * 91, -381);
+                dialogueFold.dialogueBox.transform.GetChild(3).gameObject.GetComponent<RectTransform>().localPosition = new Vector2(dialogueFold.Right * 91, -306);
+
                 dialogueFold.isDialogue = false;
             }
 
-            if (canSkipDialogue && Input.GetKey(KeyCode.Space) && !dialogueFold.timedDialogue) {
+            if (canSkipDialogue && Input.GetKey(KeyCode.Space) && !timed) {
                 Animator D_animator = dialogueFold.dialogueBox.GetComponent<Animator>();
                 D_animator.SetBool("Open", false);
                 StartCoroutine(doneTimer(0.5f));

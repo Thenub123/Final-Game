@@ -28,13 +28,17 @@ public class cutscene : MonoBehaviour
 
     private void Update() {
         if(cutsceneEnabled){
+            movement.canMove = false;
             if(events[currentEvent].done && eventLength - 1 != currentEvent){
                 currentEvent += 1; 
                 eventController();
             } 
-            if (eventLength< currentEvent) cutsceneEnabled = false;
+            if (events[currentEvent].done && currentEvent + 1 == eventLength) {
+                cutsceneEnabled = false;
+                movement.canMove = true;
+                Destroy(this);
+            }
         } 
-        // else movement.canMove = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
