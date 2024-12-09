@@ -2032,7 +2032,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &33185890
 GameObject:
@@ -6248,17 +6248,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 33185891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.591}
---- !u!114 &126575133 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5323754584530246039, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
-  m_PrefabInstance: {fileID: 1691338469721382910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &129826596
 GameObject:
   m_ObjectHideFlags: 0
@@ -22198,21 +22187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b635af1253218468a8e0c99aec4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueOrder:
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: And at least I felt something.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0
-    cutsceneCooldownTime: 0
-    eventEnabled: 1
-    EV: {fileID: 1000955981}
-  dialogueBox: {fileID: 103386583}
-  person: {fileID: 226270526}
+  events: []
   movement: {fileID: 1945619917}
-  text: {fileID: 67353850}
-  nameText: {fileID: 126575133}
-  animator: {fileID: 103386584}
 --- !u!61 &357902748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27418,7 +27394,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &451621755
 GameObject:
@@ -43350,7 +43326,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!224 &641819769 stripped
 RectTransform:
@@ -58505,7 +58481,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &863232187
 GameObject:
@@ -68057,6 +68033,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneEnabled: 0
+  done: 0
+  timed: 0
+  timeToDone: 0
+  dialogueFold:
+    isDialogue: 0
+    dialogueBox: {fileID: 0}
+    PersonImage: {fileID: 0}
+    Text: 
+    Name: 
+    Right: 1
   moveFold:
     isMove: 0
     moveCol: {fileID: 0}
@@ -75319,7 +75305,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1112511057
 GameObject:
@@ -91146,7 +91132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1467274308
 GameObject:
@@ -99601,7 +99587,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1553434887
 GameObject:
@@ -105367,7 +105353,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1652213412
 GameObject:
@@ -106007,142 +105993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b635af1253218468a8e0c99aec4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueOrder:
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: It's been a while.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
-    Text: Yeah.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: "So what are you doing here anyways? Are you seriously looking to go back?
-      Even after\u2026"
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
-    Text: ...Everything
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
-    Text: Please don't
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: I don't know. I can't stay here.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
-    Text: You have everything.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: They will kill you. Do you want that?
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: I...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: We sacrificed everything to get out of that shithole.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: So tell me, do you really want to go back?
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: It's better than what I have now.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: And at least I felt something.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0
-    cutsceneCooldownTime: 0
-    eventEnabled: 1
-    EV: {fileID: 1789729184}
-  dialogueBox: {fileID: 103386583}
-  person: {fileID: 226270526}
+  events: []
   movement: {fileID: 1945619917}
-  text: {fileID: 67353850}
-  nameText: {fileID: 126575133}
-  animator: {fileID: 103386584}
 --- !u!61 &1675351638
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106305,7 +106157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1706758806
 GameObject:
@@ -106568,6 +106420,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneEnabled: 1
+  done: 0
+  timed: 0
+  timeToDone: 0
+  dialogueFold:
+    isDialogue: 0
+    dialogueBox: {fileID: 0}
+    PersonImage: {fileID: 0}
+    Text: 
+    Name: 
+    Right: 1
   moveFold:
     isMove: 0
     moveCol: {fileID: 0}
@@ -108503,7 +108365,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &1754803041
 GameObject:
@@ -109919,6 +109781,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneEnabled: 0
+  done: 0
+  timed: 0
+  timeToDone: 0
+  dialogueFold:
+    isDialogue: 0
+    dialogueBox: {fileID: 0}
+    PersonImage: {fileID: 0}
+    Text: 
+    Name: 
+    Right: 1
   moveFold:
     isMove: 0
     moveCol: {fileID: 0}
@@ -111678,6 +111550,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneEnabled: 1
+  done: 0
+  timed: 0
+  timeToDone: 0
+  dialogueFold:
+    isDialogue: 0
+    dialogueBox: {fileID: 0}
+    PersonImage: {fileID: 0}
+    Text: 
+    Name: 
+    Right: 1
   moveFold:
     isMove: 0
     moveCol: {fileID: 0}
@@ -133460,7 +133342,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.005885, y: 6.7523046}
+  m_Size: {x: 11.5, y: 6.25}
   m_EdgeRadius: 0
 --- !u!1 &2058523782
 GameObject:

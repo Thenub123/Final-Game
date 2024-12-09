@@ -36,8 +36,8 @@ public class Laser : MonoBehaviour
     }
 
     void Update() {
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.position - transform.position, 10f, bothLayers);
-        RaycastHit2D rayGround = Physics2D.Raycast(transform.position, prevPos, 10f, bothLayers);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, player.position - transform.position, 20f, bothLayers);
+        RaycastHit2D rayGround = Physics2D.Raycast(transform.position, prevPos, 20f, bothLayers);
 
         if(enemyEnabled) {
             anim.speed = 1;
