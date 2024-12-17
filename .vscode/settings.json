@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Final-Game.git.sln"
+    "dotnet.defaultSolution": "Final-Game.sln"
 }
