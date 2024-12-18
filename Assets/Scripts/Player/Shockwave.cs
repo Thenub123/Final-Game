@@ -27,7 +27,7 @@ public class Shockwave : MonoBehaviour
     }
 
     private void Update() {
-        this.transform.position = PlayerPos.position;
+        transform.position = new Vector3(PlayerPos.position.x, PlayerPos.position.y, 0.3f);
         if(freezeParticle) {
             foreach (ParticleSystem particle in particles) {
                 particle.Pause();
