@@ -2919,17 +2919,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &126575133 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5323754584530246039, guid: 0072963abcafd6a4fb1f4e8eb8ffaac9, type: 3}
-  m_PrefabInstance: {fileID: 1691338469721382910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &135650005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8065,102 +8054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b635af1253218468a8e0c99aec4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueOrder:
-  - PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
-    Text: This place is pretty big isn't it.
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: Yea.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 6bf470db830ccbd48aeb79a2f6b4ca2d, type: 3}
-    Text: It's crazy honestly.
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: df05ab6d94e01814293d7b4bfc393f0a, type: 3}
-    Text: I've never been in a place so big and vast...
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
-    Text: ...And still feel so empty
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
-    Text: I don't want to go back... Everyone is gone; EverythingI loved; Everything
-      I hated.
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 2bf7b85e835e78a49bd58085dac1626b, type: 3}
-    Text: I can't come with you.
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
-    Text: I'm sorry.
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: 4d55a0a71d850174b94f0531b92c5121, type: 3}
-    Text: I hope you find... her...
-    Name: Loreia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  dialogueBox: {fileID: 103386583}
-  person: {fileID: 226270526}
+  events: []
   movement: {fileID: 1945619917}
-  text: {fileID: 67353850}
-  nameText: {fileID: 126575133}
-  animator: {fileID: 103386584}
 --- !u!61 &324461907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66771,6 +66666,9 @@ MonoBehaviour:
   _shockWaveTime: 0.75
   PlayerPos: {fileID: 1945619921}
   dis: 1429
+  particles: []
+  freezeParticle: 0
+  rippleMask: {fileID: 0}
 --- !u!1 &1351012543
 GameObject:
   m_ObjectHideFlags: 0
@@ -72189,102 +72087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b635af1253218468a8e0c99aec4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueOrder:
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: Thia?
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
-    Text: Yeah?
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: I'm sorry.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: dccc652dfffb90d46bb6db10115ff538, type: 3}
-    Text: Mhm?
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: What is this all about? Why do you want to go back? It's not like you have
-      it worse now.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: ad10306f6e67bb747bedb765724ad41b, type: 3}
-    Text: Anyways, nothing is gonna change you know.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: ...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: I can change things.
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: That's not really how this works, right? I mean you left for a reason.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: aa0a59f6707c215458d1f0e1fed07d3a, type: 3}
-    Text: I just... I'm...
-    Name: Phoarus
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: 21300000, guid: eb8a7f61357f1da44835c9edba91858c, type: 3}
-    Text: It's okay, I'll see you around I guess.
-    Name: Thia
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  dialogueBox: {fileID: 103386583}
-  person: {fileID: 226270526}
+  events: []
   movement: {fileID: 1945619917}
-  text: {fileID: 67353850}
-  nameText: {fileID: 126575133}
-  animator: {fileID: 103386584}
 --- !u!61 &1517015802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -86092,7 +85896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1858819621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86105,29 +85909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b635af1253218468a8e0c99aec4570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueOrder:
-  - PersonImage: {fileID: 21300000, guid: 39d4402b0c1050a4691994a0a4d21f34, type: 3}
-    Text: Test
-    Name: Jit
-    Right: 0
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  - PersonImage: {fileID: -779277810, guid: 083ed408082e8bb4db8e7cfac371cf6c, type: 3}
-    Text: Still Test
-    Name: Jit
-    Right: 1
-    cutsceneSkipTime: 0.5
-    cutsceneCooldownTime: 0.5
-    eventEnabled: 0
-    EV: {fileID: 0}
-  dialogueBox: {fileID: 103386583}
-  person: {fileID: 226270526}
+  events: []
   movement: {fileID: 1945619917}
-  text: {fileID: 67353850}
-  nameText: {fileID: 126575133}
-  animator: {fileID: 103386584}
 --- !u!4 &1858819622
 Transform:
   m_ObjectHideFlags: 0
